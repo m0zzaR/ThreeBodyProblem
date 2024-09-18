@@ -3,9 +3,9 @@ import matplotlib.pyplot as plt
 import math
 
 # Define constants
-G = 1  # Gravitational constant (normalized for simplicity)
+G = 6.67e-11
 
-timesteps = np.linspace(1, 15, 1000)
+timesteps = np.linspace(1, 3000, 1000)
 # Lists to store velocity data for plotting
 # Lists to store acceleration and position data for both objects
 a1_magnitudes = []
@@ -22,11 +22,11 @@ v2 = np.array([0, 0])
 
 # Initial positions (as vectors)
 r1 = np.array([0, 0.0])
-r2 = np.array([10, 0.0])
+r2 = np.array([93e7, 0.0]) #Dist from Earth to Sun
 
 # Define masses
-m1 = 10.0  # Mass of object 1
-m2 = 5.0  # Mass of object 2
+m1 = 2e30  # Mass of Sun (kg)
+m2 = 6e24  # Mass of Earth (kg)
 
 # Function to calculate magnitude of a 2D vector
 def mag(x):
