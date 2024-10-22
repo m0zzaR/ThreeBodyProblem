@@ -3,46 +3,84 @@
 <head>
     <meta charset="UTF-8">
     <title>N-Body Simulation</title>
+    <!-- Link to Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700&display=swap" rel="stylesheet">
+    <!-- Link to Font Awesome for icons (if needed) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha384-..." crossorigin="anonymous" />
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <h1>N-Body Simulation</h1>
-    <div id="controls">
-        <form id="simulation-form">
-            <div class="form-group">
-                <label for="numDimensions">Number of Dimensions (2 or 3):</label>
-                <input type="number" id="numDimensions" name="numDimensions" min="2" max="3" value="2" required>
-            </div>
+    <!-- Navigation Bar -->
+    <nav>
+        <div class="nav-container">
+            <div class="logo">N-Body Simulation</div>
+            <ul class="nav-links">
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="https://github.com/m0zzaR/ThreeBodyProblem">Github Project</a></li>
+            </ul>
+        </div>
+    </nav>
 
-            <div class="form-group">
-                <label for="numBodies">Number of Bodies:</label>
-                <input type="number" id="numBodies" name="numBodies" min="1" value="2" required>
-            </div>
+    <!-- Main Content -->
+    <div class="main-content">
+        <div id="controls">
+            <form id="simulation-form">
+                <h2>Simulation Settings</h2>
 
-            <!-- New checkboxes for collision options -->
-            <div class="form-group">
-                <label>
-                    <input type="checkbox" id="edgeCollision" name="edgeCollision">
-                    Enable Edge Collisions
-                </label>
-            </div>
+                <div class="form-group">
+                    <label for="numBodies">Number of Bodies:</label>
+                    <input type="number" id="numBodies" name="numBodies" min="1" value="2" required>
+                </div>
 
-            <div class="form-group">
-                <label>
-                    <input type="checkbox" id="bodyCollision" name="bodyCollision">
-                    Enable Body Collisions
-                </label>
-            </div>
+                <!-- Checkboxes for options -->
+                <div class="form-group checkbox-group">
+                    <label>
+                        <input type="checkbox" id="edgeCollision" name="edgeCollision">
+                        Enable Edge Collisions
+                    </label>
+                    <label>
+                        <input type="checkbox" id="bodyCollision" name="bodyCollision">
+                        Enable Body Collisions
+                    </label>
+                    <label>
+                        <input type="checkbox" id="randomizePositions" name="randomizePositions">
+                        Randomize Positions
+                    </label>
+                    <label>
+                        <input type="checkbox" id="showTrails" name="showTrails" checked>
+                        Show Trails
+                    </label>
+                </div>
 
-            <div id="bodies-container">
-                <!-- Body input fields will be dynamically added here -->
-            </div>
+                <canvas id="simulation-canvas"></canvas>
+                                <!-- New section for Save and Load -->
+                                <div class="form-group">
+                                    <label for="configurationString">Configuration String:</label>
+                                    <textarea id="configurationString" rows="3" placeholder="Copy or paste configuration string here"></textarea>
+                                </div>
+                
+                                <div class="button-group">
+                                    <button type="submit" id="start-button">Start Simulation</button>
+                                    <button type="button" id="stop-button" disabled>Stop Simulation</button>
+                                </div>
+                
+                                <div class="button-group">
+                                    <button type="button" id="save-button">Save Configuration</button>
+                                    <button type="button" id="load-button">Load Configuration</button>
+                                </div>
 
-            <button type="submit">Start Simulation</button>
-        </form>
+                <p>-</p>
+                <p>Click on body 1 and then on the simulation box to more intuively change body positions</p>
+                <div id="bodies-container">
+                    <!-- Body input fields will be dynamically added here -->
+                </div>
+
+
+            </form>
+        </div>
+        
     </div>
-    <canvas id="simulation-canvas"></canvas>
-
     <script src="script.js"></script>
+    <script src="serialization.js"></script>
 </body>
 </html>
